@@ -20,4 +20,8 @@ Our method relies on an inter-tweened use of the forward splatting operation tha
 
 ![Concept](fastforward_miccai_concept.png?raw=true "Concept")
 
+Given two sparse point clouds $\mathcal{F}$ and $\mathcal{M}$ we rasterise 3D volumes $\mathbf{F}$ and $\mathbf{M}$ by **forward splatting** $\zeta$ as input to a registration U-Net (including a B-spline transform) which predicts a dense deformation $\phi$ that is sampled sparsely at the points of $\mathcal{F}$ (vector addition). An $L_1$ loss of a newly splatted  $\mathbf{F}_{\phi}=\zeta(\mathcal{F},\phi)$ and $\mathbf{M}$ is used to derive a well differentiable loss and **stable multi-stage model** without explicit regularisation.
+
+
+
 
