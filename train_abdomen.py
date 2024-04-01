@@ -12,7 +12,7 @@ from tqdm import tqdm,trange
 import argparse
 import time
 
-from util_divroc3d import GaussianSmoothing,DiVRoC
+from util_miccai24 import GaussianSmoothing,DiVRoC
 device = 'cuda'
 H = W = D = 128
 
