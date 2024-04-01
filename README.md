@@ -16,5 +16,8 @@ The provide code reproduces the key elements of our method an demonstrates how t
 - [ ] All trained models as pth
 - [ ] More models and ablations
 
-Our method relies on an inter-tweened use of the forward splatting operation that was first defined in the following ICCV 2023 paper  <[https://openaccess.thecvf.com/content/ICCV2023/papers/Heinrich_Chasing_Clouds_Differentiable_Volumetric_Rasterisation_of_Point_Clouds_as_a_ICCV_2023_paper.pdf](Chasing Cloud / PDF)>. 
+Our method relies on an inter-tweened use of the forward splatting operation that was first defined in the following ICCV 2023 paper  <https://openaccess.thecvf.com/content/ICCV2023/papers/Heinrich_Chasing_Clouds_Differentiable_Volumetric_Rasterisation_of_Point_Clouds_as_a_ICCV_2023_paper.pdf>. It crucially extends this concept by defining the forward splatting for both dense and sparse image alignment problems (and not only point clouds) and placing it into a multi-step, inverse-consistent registration framework with U-Net backbones (rather than the complicated PointPWC). It comes with much improved versatility and higher accuracy for a wider range of tasks and sets new state-of-the-art performance in many benchmarks.
+
+![Concept](fastforward_miccai_concept.png?raw=true "Concept")
+
 
