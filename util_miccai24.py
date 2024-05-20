@@ -10,6 +10,8 @@ from torch.autograd.functional import jacobian
 import sys
 import numpy as np
 
+H=W=D=128
+
 class GaussianSmoothing(nn.Module):
     def __init__(self, sigma):
         super(GaussianSmoothing, self).__init__()
