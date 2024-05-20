@@ -10,6 +10,26 @@ from torch.autograd.functional import jacobian
 import sys
 import numpy as np
 
+class GaussianSmoothing(nn.Module):
+    def __init__(self, sigma):
+        super(GaussianSmoothing, self).__init__()
+        
+        sigma = torch.tensor([sigma])
+        N = torch.ceil(sigma * 3.0 / 2.0).long().item() * 2 + 1
+    
+        weight = torch.exp(-torch.pow(torch.linspace(-(N // 2), N // 2, N), 2) / (2 * torch.pow(sigma, 2)))
+        weight /= weight.sum()
+        
+        self.weight = weight
+        
+    def forward(self, x):
+        device = x.device
+        
+        x = filter1D(x, self.weight.to(device), 0)
+        x = filter1D(x, self.weight.to(device), 1)
+        x = filter1D(x, self.weight.to(device), 2)
+        
+        return x
 class DiVRoC(Function):
     @staticmethod
     def forward(ctx, input, grid, shape):
@@ -101,26 +121,6 @@ def smooth(img, sigma):
     
     return img
 
-class GaussianSmoothing(nn.Module):
-    def __init__(self, sigma):
-        super(GaussianSmoothing, self).__init__()
-        
-        sigma = torch.tensor([sigma])
-        N = torch.ceil(sigma * 3.0 / 2.0).long().item() * 2 + 1
-    
-        weight = torch.exp(-torch.pow(torch.linspace(-(N // 2), N // 2, N), 2) / (2 * torch.pow(sigma, 2)))
-        weight /= weight.sum()
-        
-        self.weight = weight
-        
-    def forward(self, x):
-        device = x.device
-        
-        x = filter1D(x, self.weight.to(device), 0)
-        x = filter1D(x, self.weight.to(device), 1)
-        x = filter1D(x, self.weight.to(device), 2)
-        
-        return x
     
 class Sigmoid5(nn.Module):
     def __init__(self):
