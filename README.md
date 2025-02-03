@@ -19,7 +19,7 @@ The provide code reproduces the key elements of our method an demonstrates how t
 ## Concept
 Our method relies on an inter-tweened use of the forward splatting operation that was first defined in the following ICCV 2023 paper  <https://openaccess.thecvf.com/content/ICCV2023/papers/Heinrich_Chasing_Clouds_Differentiable_Volumetric_Rasterisation_of_Point_Clouds_as_a_ICCV_2023_paper.pdf>. It crucially extends this concept by defining the forward splatting for both dense and sparse image alignment problems (and not only point clouds) and placing it into a multi-step, inverse-consistent registration framework with U-Net backbones (rather than the complicated PointPWC). It comes with much improved versatility and higher accuracy for a wider range of tasks and sets new state-of-the-art performance in many benchmarks.
 
-![Concept](fastforward_miccai_concept.png?raw=true "Concept")
+![Concept](fastforward_midl_concept.png?raw=true "Concept")
 
 Given two sparse point clouds $\mathcal{F}$ and $\mathcal{M}$ we rasterise 3D volumes $\mathbf{F}$ and $\mathbf{M}$ by **forward splatting** $\zeta$ as input to a registration U-Net (including a B-spline transform) which predicts a dense deformation $\phi$ that is sampled sparsely at the points of $\mathcal{F}$ (vector addition). An $L_1$ loss of a newly splatted  $\mathbf{F}_{\phi}=\zeta(\mathcal{F},\phi)$ and $\mathbf{M}$ is used to derive a well differentiable loss and **stable multi-stage model** without explicit regularisation.
 
