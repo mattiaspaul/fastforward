@@ -1,5 +1,5 @@
 # fastforward
-anonymous MICCAI 2024 submission on forward splatting for 3D deformable medical image registration 
+MIDL 2025 submission on forward splatting for 3D deformable medical image registration 
 
 ## Fast forward: Rephrasing 3D deformable image registration through density alignment and splatting
 
