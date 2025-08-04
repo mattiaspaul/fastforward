@@ -134,8 +134,5 @@ for i in trange(30):
 ```
 Note that this code relies on the **pointops lib** from <https://github.com/POSTECH-CVLab/point-transformer>.  
 
-
-
-
-
-
+### Licence and commercial usage 
+parts of the method are patented at German and European level https://patents.google.com/patent/EP4535285A3/en hence commericial use without licence agreement is prohibited
